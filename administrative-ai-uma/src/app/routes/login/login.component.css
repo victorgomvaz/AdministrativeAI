@@ -1,0 +1,71 @@
+.login-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #f5a623, #7ed6df, #70a1ff, #2ed573);
+    background-size: cover;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  h1{
+    color: rgb(28, 33, 135);
+  }
+  
+  .login-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    position: relative;
+  }
+  
+  .logo {
+    height: 180pt;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  .sso-button {
+    background-color: rgb(28, 33, 135);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 3px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .divider {
+    margin: 1.5rem 0;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-link {
+    color: rgb(28, 33, 135);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
