@@ -1,22 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { AuthenticateService } from '../../services/authenticate.service';
-import { UserCredential } from 'firebase/auth';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticateService } from '../../../services/authenticate.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ChatComponent } from './chat/chat.component';
-import { FooterComponent } from './footer/footer.component';
-import { InicioComponent } from './inicio/inicio.component';
 
 @Component({
-  selector: 'home-component',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-chat',
+  imports: [CommonModule, FormsModule],
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, NavbarComponent, FooterComponent],
+  templateUrl: './chat.component.html',
+  styleUrl: './chat.component.css'
 })
-export class HomeComponent implements OnInit {
+export class ChatComponent {
   userData: any;
   username: string = '';
   message: string = '';
@@ -32,17 +27,7 @@ export class HomeComponent implements OnInit {
         this.userData = user;
         this.username = user.displayName || user.email || 'Usuario Anónimo';
         console.log('Datos del usuario:', this.userData);
-        this.router.navigate(['/home/inicio']); // Redirige a la ruta de inicio al cargar el componente
       }
-    });
-  }
-
-  logout() {
-    this.authService.signOut().then(() => {
-      this.authService.clearUser();
-      this.router.navigate(['/login']);
-    }).catch((error) => {
-      console.error('Error during logout:', error);
     });
   }
 
@@ -59,6 +44,4 @@ export class HomeComponent implements OnInit {
 
     this.message = '';
   }
-
-  
 }

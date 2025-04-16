@@ -1,38 +1,13 @@
 <div class="page-container">
     <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="title">SCACIA</div>
-      <div class="user-info">
-        <span class="username">🧑🏻 {{ username }}</span>
-      </div>
-      <button (click)="logout()" class="btn draw-border">Cerrar sesión</button>
-    </nav>
+    <app-navbar></app-navbar>
   
     <!-- CHAT CONTENT -->
-    <main class="chat-body">
-      <div class="messages">
-        <div *ngFor="let msg of messages" [ngClass]="msg.sender">
-          <span class="bubble">{{ msg.text }}</span>
-        </div>
-      </div>
-  
-      <div class="input-bar">
-        <input
-          type="text"
-          [(ngModel)]="message"
-          (keydown.enter)="sendMessage()"
-          placeholder="Escribe un mensaje..."
-        />
-        <button (click)="sendMessage()">➤</button>
-      </div>
-    </main>
+     <div class="chat-container">
+      <router-outlet></router-outlet>
+     </div>
   
     <!-- FOOTER -->
-    <footer class="footer">
-      <a href="#">Inicio</a>
-      <a href="#">Perfil</a>
-      <a href="#">Ajustes</a>
-      <a href="#">Soporte</a>
-    </footer>
+    <app-footer></app-footer>
   </div>
   
