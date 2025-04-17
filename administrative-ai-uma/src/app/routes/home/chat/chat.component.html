@@ -1,7 +1,13 @@
 <div class="chat-body">
     <div class="messages">
       <div *ngFor="let msg of messages" [ngClass]="msg.sender">
+        <span class="icon">
+          <img *ngIf="msg.sender == 'bot'" src="https://play-lh.googleusercontent.com/1ablN4tSAjjoJaN8rhw8i-cOm-431RGypaRjoi-ArgOJI0GuTl9IQE4Ag-2ntME8rYEb">
+        </span>
         <span class="bubble">{{ msg.text }}</span>
+        <span class="icon">
+          <img *ngIf="msg.sender == 'user'" src="https://cdn-icons-png.flaticon.com/512/18913/18913741.png">
+        </span>
       </div>
     </div>
 
