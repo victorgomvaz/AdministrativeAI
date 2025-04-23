@@ -16,6 +16,7 @@ export class ChatComponent {
   username: string = '';
   message: string = '';
   messages: { text: string; sender: 'user' | 'bot' }[] = [];
+  loading: boolean = false;
 
   constructor(private router: Router, private authService: AuthenticateService) {}
 

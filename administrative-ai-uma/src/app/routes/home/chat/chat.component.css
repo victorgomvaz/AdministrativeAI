@@ -8,24 +8,6 @@
     height: 100vh;
   }
   
-  /* NAVBAR */
-  .navbar {
-    background-color: #0d2b66;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .user-info .username {
-    font-weight: normal;
-  }
   
   /* CHAT BODY */
   .chat-body {
@@ -53,6 +35,7 @@
   .user{
     align-items: center;
     align-self: flex-end;
+    display: flex;
     .bubble {
         background-color: #0d2b66;
         color: white;
@@ -65,7 +48,10 @@
   } 
   
   .bot{
+    align-items: center;
     align-self: flex-start;
+    display: flex;
+
     .bubble {
         background-color: #e0e0e0;
         color: black;
@@ -79,9 +65,10 @@
   }
   
   .bubble {
-    max-width: 60%;
     padding: 0.75rem 1rem;
     border-radius: 20px;
+
+    
   }
   
   /* INPUT */
@@ -108,76 +95,23 @@
     cursor: pointer;
   }
   
-  /* FOOTER */
-  .footer {
-    background-color: #0d2b66;
-    color: white;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem;
+  
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
-  .footer a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
+  div.animation {
+    border: 6px dotted black;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    animation: loading 2s infinite linear;
   }
-
-  .draw-border {
-    box-shadow: inset 0 0 0 4px #0d2b66;
-    color: #ffffff;
-    -webkit-transition: color 0.25s 0.0833333333s;
-    transition: color 0.25s 0.0833333333s;
-    position: relative;
-  }
-  .draw-border::before, .draw-border::after {
-    border: 0 solid transparent;
-    box-sizing: border-box;
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    width: 0;
-    height: 0;
-    bottom: 0;
-    right: 0;
-  }
-  .draw-border::before {
-    border-bottom-width: 4px;
-    border-left-width: 4px;
-  }
-  .draw-border::after {
-    border-top-width: 4px;
-    border-right-width: 4px;
-  }
-  .draw-border:hover {
-    color: #ffffff;
-  }
-  .draw-border:hover::before, .draw-border:hover::after {
-    border-color: #ffffff;
-    -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
-    transition: border-color 0s, width 0.25s, height 0.25s;
-    width: 100%;
-    height: 100%;
-  }
-  .draw-border:hover::before {
-    -webkit-transition-delay: 0s, 0s, 0.25s;
-            transition-delay: 0s, 0s, 0.25s;
-  }
-  .draw-border:hover::after {
-    -webkit-transition-delay: 0s, 0.25s, 0s;
-            transition-delay: 0s, 0.25s, 0s;
-  }
+ 
   
-  .btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 1.5;
-    font: 700 1.2rem 'Roboto Slab', sans-serif;
-    padding: 0.5em 1em;
-    letter-spacing: 0.05rem;
-  }
-  .btn:focus {
-    outline: 2px dotted #0d2b66;
-  }
