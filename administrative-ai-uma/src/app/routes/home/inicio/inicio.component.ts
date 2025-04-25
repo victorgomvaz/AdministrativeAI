@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from '../../../services/authenticate.service';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-inicio',
-  imports: [RouterModule],
+  imports: [RouterModule, ButtonModule, CardModule],
+  standalone: true,
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })

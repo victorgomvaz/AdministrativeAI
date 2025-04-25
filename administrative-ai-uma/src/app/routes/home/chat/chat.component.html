@@ -7,7 +7,7 @@
         <span *ngIf="!loading || msg.sender == 'user'" class="bubble">{{ msg.text }}</span>
         <div *ngIf="loading && msg.sender == 'bot'" class="animation"></div>
         <span class="icon">
-          <img *ngIf="msg.sender == 'user'" src="https://cdn-icons-png.flaticon.com/512/18913/18913741.png">
+          <p-avatar *ngIf="msg.sender == 'user'" [image]="this.userData.photoURL" class="mr-2" size="large" shape="circle" />
         </span>
       </div>
     </div>
@@ -22,3 +22,13 @@
       <button (click)="sendMessage()">➤</button>
     </div>
   </div>
+
+  <p-dialog header="Advertencia" [modal]="true" [(visible)]="visible" [baseZIndex]="10000">
+    <span class="p-text-secondary block mb-8">El chatbot esta en fase de experimentacion, las
+       inferencias pueden no ser precisas, en caso de duda consulta con el equipo de secretaria 
+       o la documentacion oficial.
+    </span>
+    <div class="flex justify-end gap-2">
+        <p-button label="Save" (click)="visible = false" />
+    </div>
+</p-dialog>
