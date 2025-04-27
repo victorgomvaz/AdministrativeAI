@@ -4,7 +4,7 @@
         <span class="icon">
           <img *ngIf="msg.sender == 'bot'" src="https://play-lh.googleusercontent.com/1ablN4tSAjjoJaN8rhw8i-cOm-431RGypaRjoi-ArgOJI0GuTl9IQE4Ag-2ntME8rYEb">
         </span>
-        <span *ngIf="!loading || msg.sender == 'user'" class="bubble">{{ msg.text }}</span>
+        <span *ngIf="!loading || msg.sender == 'user'" class="bubble" [innerHTML]="msg.text"></span>
         <div *ngIf="loading && msg.sender == 'bot'" class="animation"></div>
         <span class="icon">
           <p-avatar *ngIf="msg.sender == 'user'" [image]="this.userData.photoURL" class="mr-2" size="large" shape="circle" />

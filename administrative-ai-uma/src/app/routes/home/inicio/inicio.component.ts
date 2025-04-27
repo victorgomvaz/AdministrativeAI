@@ -4,6 +4,7 @@ import { AuthenticateService } from '../../../services/authenticate.service';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { GptService } from '../../../services/gpt.service';
 
 @Component({
   selector: 'app-inicio',
@@ -18,5 +19,9 @@ export class InicioComponent {
 
   abrirChat(){
     this.router.navigate(['/home/chat']);
+  }
+
+  ngOnInit() {
+    
   }
 }

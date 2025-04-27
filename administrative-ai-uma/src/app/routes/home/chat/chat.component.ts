@@ -7,6 +7,7 @@ import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
+import { GptService } from '../../../services/gpt.service';
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +31,7 @@ export class ChatComponent {
 
   visible: boolean = false;
 
-  constructor(private router: Router, private authService: AuthenticateService) {}
+  constructor(private router: Router, private authService: AuthenticateService, private gptService: GptService) {}
 
   ngOnInit(): void {
     this.authService.observeAuthState().subscribe((user) => {
@@ -43,22 +44,22 @@ export class ChatComponent {
           this.fotoPerfil = user.photoURL;
         }
         this.username = user.displayName || user.email || 'Usuario Anónimo';
-        console.log('Datos del usuario:', this.userData);
+
       }
     });
   }
 
   sendMessage() {
-    const msg = this.message.trim();
+    
+    const msg = '<p>'+this.message.trim()+'</p>';
     if (!msg) return;
-
-    this.messages.push({ text: msg, sender: 'user' });
-
-    // Simular respuesta del bot
-    setTimeout(() => {
-      this.messages.push({ text: 'Esta es una respuesta automática del bot.', sender: 'bot' });
-    }, 500);
-
     this.message = '';
+    this.messages.push({ text: msg, sender: 'user' });
+    // Simular respuesta del bot
+    
+    this.gptService.askQuestion(msg).subscribe(response => {
+      this.messages.push({ text: response.response, sender: 'bot' });
+       // Limpiar el campo de entrada
+    });
   }
 }
