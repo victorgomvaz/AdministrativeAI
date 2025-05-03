@@ -44,6 +44,7 @@ export class ChatComponent {
           this.fotoPerfil = user.photoURL;
         }
         this.username = user.displayName || user.email || 'Usuario Anónimo';
+        this.mensajesBienvenida();
 
       }
     });
@@ -61,5 +62,9 @@ export class ChatComponent {
       this.messages.push({ text: response.response, sender: 'bot' });
        // Limpiar el campo de entrada
     });
+  }
+
+  mensajesBienvenida() {
+    this.messages.push({ text: '<p>Hola, soy el asistente de SCACIA. ¿En qué puedo ayudarte hoy?</p>', sender: 'bot' });
   }
 }
