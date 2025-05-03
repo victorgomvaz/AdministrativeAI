@@ -1,6 +1,13 @@
 
 *{
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  
 }
 .page-container {
     display: flex;
