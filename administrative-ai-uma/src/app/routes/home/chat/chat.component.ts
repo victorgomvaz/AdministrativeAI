@@ -8,6 +8,14 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { GptService } from '../../../services/gpt.service';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  keyframes
+} from '@angular/animations';
 
 @Component({
   selector: 'app-chat',
@@ -18,6 +26,18 @@ import { GptService } from '../../../services/gpt.service';
     InputTextModule, 
     AvatarModule],
   standalone: true,
+  animations: [
+    trigger('slideIn', [
+      transition('bot => void, void => bot', [
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate('300ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ]),
+      transition('user => void, void => user', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('300ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ])
+    ])
+  ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })

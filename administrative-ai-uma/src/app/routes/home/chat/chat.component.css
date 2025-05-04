@@ -24,7 +24,6 @@
     flex-direction: column;
     padding: 1rem;
     background-color: #f7f7f8;
-    overflow-y: auto;
   }
   
   .messages {
@@ -37,6 +36,7 @@
     background-color: white;        /* Fondo blanco */
     border: 1px solid #ddd;         /* Borde gris claro */
     border-radius: 8px;
+    overflow-y: auto;
   }
   
   .user{
