@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from '../../../services/authenticate.service';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { GptService } from '../../../services/gpt.service';
+import { ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import {
   trigger,
   state,
@@ -48,8 +49,8 @@ export class ChatComponent {
   fotoPerfil: string = 'https://www.gravatar.com/avatar/';
   messages: { text: string; sender: 'user' | 'bot' }[] = [];
   loading: boolean = false;
-
   visible: boolean = false;
+  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
   constructor(private router: Router, private authService: AuthenticateService, private gptService: GptService) {}
 
@@ -69,17 +70,25 @@ export class ChatComponent {
       }
     });
   }
+  
 
   sendMessage() {
     
     const msg = '<p>'+this.message.trim()+'</p>';
-    if (!msg) return;
+    if (!this.message.trim()) {
+      
+      return;
+    }    
     this.message = '';
     this.messages.push({ text: msg, sender: 'user' });
+    this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight; // 👈 Espera a que el DOM se actualice
+    this.loading = true;
     // Simular respuesta del bot
     
     this.gptService.askQuestion(msg).subscribe(response => {
+      this.loading = false;
       this.messages.push({ text: response.response, sender: 'bot' });
+      this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight; // 👈 Espera a que el DOM se actualice
        // Limpiar el campo de entrada
     });
   }

@@ -1,16 +1,27 @@
 <div class="chat-body">
-    <div class="messages">
-      <div *ngFor="let msg of messages" [ngClass]="msg.sender" [@slideIn]="msg.sender">
-      <span class="icon">
-        <img *ngIf="msg.sender == 'bot'" src="https://play-lh.googleusercontent.com/1ablN4tSAjjoJaN8rhw8i-cOm-431RGypaRjoi-ArgOJI0GuTl9IQE4Ag-2ntME8rYEb">
+  <div class="messages" #messagesContainer>
+    <div *ngFor="let msg of messages; let last = last" [ngClass]="msg.sender" [@slideIn]="msg.sender">
+      <span class="icon" *ngIf="msg.sender === 'bot'">
+        <img src="https://play-lh.googleusercontent.com/1ablN4tSAjjoJaN8rhw8i-cOm-431RGypaRjoi-ArgOJI0GuTl9IQE4Ag-2ntME8rYEb" />
       </span>
-      <span *ngIf="!loading || msg.sender == 'user'" class="bubble" [innerHTML]="msg.text"></span>
-      <div *ngIf="loading && msg.sender == 'bot'" class="animation"></div>
+  
+      <!-- Mostrar el mensaje solo si NO es el último o si no está cargando -->
+      <span 
+        *ngIf="msg.sender === 'user' || !last || !loading" 
+        class="bubble" 
+        [innerHTML]="msg.text">
+      </span>
+  
       <span class="icon">
         <p-avatar *ngIf="msg.sender == 'user'" [image]="this.userData.photoURL" class="mr-2" size="large" shape="circle" />
       </span>
-      </div>
     </div>
+  
+    <!-- Spinner solo cuando loading = true -->
+    <div class="loadingAnimation" *ngIf="loading">
+      <div class="animation"></div>
+    </div>
+  </div>
 
     <div class="input-bar">
       <input

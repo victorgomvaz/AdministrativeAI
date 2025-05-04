@@ -38,6 +38,36 @@
     border-radius: 8px;
     overflow-y: auto;
   }
+
+/* Scrollbar base (Chrome, Safari, Edge, Opera) */
+.messages::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Fondo del track */
+.messages::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+/* Pulgar de scroll (lo que se mueve) */
+.messages::-webkit-scrollbar-thumb {
+  background: #0d2b66; /* azul tipo educativo */
+  border-radius: 10px;
+}
+
+/* Al pasar el ratón */
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #0d2b66;
+}
+
+/* Firefox */
+.messages {
+  scrollbar-width: thin;
+  scrollbar-color: #0d2b66 #f0f0f0;
+  scroll-behavior: smooth;
+}
   
   .user{
     align-items: center;
@@ -114,11 +144,18 @@
   }
   
   div.animation {
-    border: 6px dotted black;
+    border: 6px dotted #0d2b66;
     border-radius: 100%;
     width: 50px;
     height: 50px;
     animation: loading 2s infinite linear;
   }
  
+  .loadingAnimation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
   
